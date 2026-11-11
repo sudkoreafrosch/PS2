@@ -192,7 +192,8 @@ round(summary(m4)$coefficients, 5)
 
 t4 <- summary(m4)$coefficients["educ:exper", "t value"]
 c(t = t4, df = df.residual(m4),
-  p_one_sided = pt(t4, df.residual(m4), lower.tail = FALSE))```
+  p_one_sided = pt(t4, df.residual(m4), lower.tail = FALSE))
+```
 
 ------------------------------------------------------------------------
 
@@ -436,7 +437,8 @@ c(SSR_r = ssr_r, SSR_ur = ssr_ur, F = F_stat, df1 = q, df2 = df_ur,
   p = pf(F_stat, q, df_ur, lower.tail = FALSE))
 
 anova(m8, m9)          ## check
-summary(m9)$fstatistic ## overall F test, for comparison```
+summary(m9)$fstatistic ## overall F test, for comparison
+```
 
 ------------------------------------------------------------------------
 
