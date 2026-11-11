@@ -49,9 +49,15 @@ Confirm the partialling out interpretation of the OLS estimates by explicitly do
 ------------------------------------------------------------------------
 
 [PUT YOUR ANSWER HERE]
+두 계수는 0.0920으로 정확히 일치한다. $\hat{r}_1$은 educ에서 exper, tenure로 설명되는 부분을 걷어 내고 남은 부분이다. 다중회귀에서 educ의 계수도 바로 이 남은 부분으로 계산되므로 두 값이 같아진다. 이것이 FWL 정리이다.
 
 ```{r}
-## [PUT YOUR CODE HERE]
+full <- lm(log(wage) ~ educ + exper + tenure, data = wage1)
+
+wage1$r1 <- resid(lm(educ ~ exper + tenure, data = wage1))
+fwl <- lm(log(wage) ~ r1, data = wage1)
+
+c(educ_full = unname(coef(full)["educ"]), r1_partialled = unname(coef(fwl)["r1"]))
 ```
 
 ------------------------------------------------------------------------
@@ -67,6 +73,18 @@ We will now implement an interaction model, again with the `wage1` dataset.
 ------------------------------------------------------------------------
 
 [PUT YOUR ANSWER HERE]
+1. female을 question 1의 모든 설명변수와 상호작용시킨다.
+$$
+\begin{aligned}
+\log(wage) = {} & \beta_0 + \delta_0 female + \beta_1 educ + \beta_2 exper + \beta_3 tenure \\
+& + \delta_1 female \cdot educ + \delta_2 female \cdot exper + \delta_3 female \cdot tenure + u .
+\end{aligned}
+$$
+
+female 더미만 넣으면 교육, 경력, 근속 1년이 임금을 올리는 폭이 남녀 모두 같다고 가정하게 된다. 이 경우 성별 임금격차는 교육이나 경력 수준과 상관없이 늘 일정하다. 그러나 같은 1년이 지나도 여성의 임금은 덜 오를 수 있다. 여성이 임금이 낮은 직종에 몰려 있거나 승진에서 불리하면 교육과 근속의 효과가 작아진다. 
+
+이 모형에서 각 변수 1년의 효과는 남성이 $\beta_j$, 여성이 $\beta_j + \delta_j$이다. 즉 상호작용 계수 $\delta_j$는 남녀 간 효과의 차이이며, $H_0: \delta_1 = \delta_2 = \delta_3 = 0$은 세 변수의 효과가 남녀 간에 같은지를 검정한다.
+
 
 ```{r}
 ## [PUT YOUR CODE HERE]
