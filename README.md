@@ -207,13 +207,7 @@ Use conventional homoskedastic standard errors in Questions 8--9.
 
 Let
 
-$$
-\mathbb{E}[\hat{\theta}_n] = \theta,
-\qquad
-\operatorname{Var}(\hat{\theta}_n) = \frac{4}{n},
-\qquad
-\tilde{\theta}_n = 0.8\hat{\theta}_n.
-$$
+$$\mathbb{E}[\hat{\theta}_n] = \theta,\qquad\operatorname{Var}(\hat{\theta}_n) = \frac{4}{n},\qquad\tilde{\theta}_n = 0.8\hat{\theta}_n.$$
 
 1. Derive each estimator's bias, variance, and MSE for estimating $\theta$.
 2. For $\theta=1$, compare their MSEs at $n=25$ and $n=400$. Which estimator is preferable in each case?
@@ -246,9 +240,7 @@ $$
 
 Consider
 
-$$
-Y_i = \beta_0 + \beta_1 X_i + u_i.
-$$
+$$Y_i = \beta_0 + \beta_1 X_i + u_i.$$
 
 Write $\mathbf{X}=(X_1,\ldots,X_n)$ and $S_{XX}=\sum_i(X_i-\bar{X})^2>0$.
 
@@ -260,22 +252,15 @@ Write $\mathbf{X}=(X_1,\ldots,X_n)$ and $S_{XX}=\sum_i(X_i-\bar{X})^2>0$.
 [PUT YOUR ANSWER HERE]
 **1.** 핵심은 $\hat\beta_1$을 "참값 + 오차의 가중합"으로 쓰는 것이다. $\sum_i (X_i - \bar X) = 0$이므로 OLS 기울기는 $\hat\beta_1 = \sum_i (X_i - \bar X) Y_i / S_{XX}$이다. SLR.3에 의해 $S_{XX} > 0$이므로 이 나눗셈은 가능하다. 여기에 $Y_i = \beta_0 + \beta_1 X_i + u_i$ (SLR.1)를 대입하고 $\sum_i (X_i - \bar X) = 0$, $\sum_i (X_i - \bar X) X_i = S_{XX}$를 이용하면
 
-$$
-\hat\beta_1 = \frac{\beta_0 \sum_i (X_i - \bar X) + \beta_1 \sum_i (X_i - \bar X) X_i + \sum_i (X_i - \bar X) u_i}{S_{XX}}
-= \beta_1 + \frac{\sum_i (X_i - \bar X) u_i}{S_{XX}} .
-$$
+$$\hat\beta_1 = \frac{\beta_0 \sum_i (X_i - \bar X) + \beta_1 \sum_i (X_i - \bar X) X_i + \sum_i (X_i - \bar X) u_i}{S_{XX}}= \beta_1 + \frac{\sum_i (X_i - \bar X) u_i}{S_{XX}} .$$
 
 $\mathbf{X}$를 고정하면 가중치 $(X_i - \bar X)/S_{XX}$는 상수이다. 또 확률표본(SLR.2)과 조건부 평균 0 (SLR.4)에 의해 $\mathbb{E}[u_i \mid \mathbf{X}] = \mathbb{E}[u_i \mid X_i] = 0$이므로, 기댓값을 취하면 오차항이 사라진다.
 
-$$
-\mathbb{E}[\hat\beta_1 \mid \mathbf{X}] = \beta_1 + \frac{\sum_i (X_i - \bar X)\, \mathbb{E}[u_i \mid \mathbf{X}]}{S_{XX}} = \beta_1 .
-$$
+$$\mathbb{E}[\hat\beta_1 \mid \mathbf{X}] = \beta_1 + \frac{\sum_i (X_i - \bar X)\, \mathbb{E}[u_i \mid \mathbf{X}]}{S_{XX}} = \beta_1 .$$
 
 **2.** 1번 식에서 $\beta_1$은 상수이므로, 분산은 오차의 가중합에서만 나온다. 확률표본이므로 관측치 간 오차는 서로 상관이 없고, SLR.5에 의해 각 오차의 분산은 $\sigma^2$로 같다. 따라서
 
-$$
-\operatorname{Var}(\hat\beta_1 \mid \mathbf{X}) = \frac{1}{S_{XX}^2} \sum_i (X_i - \bar X)^2 \operatorname{Var}(u_i \mid \mathbf{X}) = \frac{\sigma^2 S_{XX}}{S_{XX}^2} = \frac{\sigma^2}{S_{XX}} .
-$$
+$$\operatorname{Var}(\hat\beta_1 \mid \mathbf{X}) = \frac{1}{S_{XX}^2} \sum_i (X_i - \bar X)^2 \operatorname{Var}(u_i \mid \mathbf{X}) = \frac{\sigma^2 S_{XX}}{S_{XX}^2} = \frac{\sigma^2}{S_{XX}} .$$
 
 동분산성이 깨져도 1번의 불편성은 그대로이다. 1번에서는 SLR.5를 쓰지 않았기 때문이다. 깨지는 것은 분산 공식이다. 실제 분산은 $\sum_i (X_i - \bar X)^2 \sigma_i^2 / S_{XX}^2$이 되므로, 통상적 표준오차와 이를 쓰는 $t$, $F$ 검정은 틀리게 되고 OLS는 더 이상 BLUE가 아니다.
 
@@ -306,9 +291,7 @@ For Questions 8--9, use one `wage1` sample with complete `wage`, `educ`, `exper`
 
 Estimate
 
-$$
-\log(wage_i) = \beta_0 + \beta_1 educ_i + u_i.
-$$
+$$\log(wage_i) = \beta_0 + \beta_1 educ_i + u_i.$$
 
 1. Report $n$ and interpret $\hat{\beta}_1$. Calculate $\hat{\sigma}^2$ and the education coefficient's standard error from the residuals and regressor values; check against `summary()`.
 2. Calculate a 95% $t$ confidence interval and two-sided $t$ tests of $\beta_1=0$ and $\beta_1=0.08$ at the 5% level. Report the test statistics, degrees of freedom, and $p$-values.
@@ -319,11 +302,7 @@ $$
 [PUT YOUR ANSWER HERE]
 **1.** $n = 526$이다. $\hat\beta_1 = 0.0827$이므로 교육이 1년 많으면 시간당 임금이 약 8.3% 높다. 잔차와 `educ` 값으로 직접 계산하면
 
-$$
-\hat\sigma^2 = \frac{\sum_i \hat u_i^2}{n - 2} = \frac{120.77}{524} = 0.2305,
-\qquad
-\operatorname{se}(\hat\beta_1) = \sqrt{\frac{\hat\sigma^2}{S_{XX}}} = \sqrt{\frac{0.2305}{4025.43}} = 0.00757
-$$
+$$\hat\sigma^2 = \frac{\sum_i \hat u_i^2}{n - 2} = \frac{120.77}{524} = 0.2305,\qquad\operatorname{se}(\hat\beta_1) = \sqrt{\frac{\hat\sigma^2}{S_{XX}}} = \sqrt{\frac{0.2305}{4025.43}} = 0.00757$$
 
 이고, 둘 다 `summary()`의 값과 같다.
 
@@ -375,9 +354,7 @@ data.frame(H0 = c("beta1 = 0", "beta1 = 0.08"),
 
 Using the same sample, estimate
 
-$$
-\log(wage_i) = \beta_0 + \beta_1 educ_i + \beta_2 exper_i + \beta_3 tenure_i + u_i.
-$$
+$$\log(wage_i) = \beta_0 + \beta_1 educ_i + \beta_2 exper_i + \beta_3 tenure_i + u_i.$$
 
 1. Reconstruct the education coefficient's standard error using $\hat{\sigma}^2$, education's total sum of squares, and the $R^2$ from regressing `educ` on an intercept, `exper`, and `tenure`. Compare it with Question 8. Must adding controls improve precision? Explain.
 2. Test $H_0:\beta_2=\beta_3=0$ against the alternative that at least one is nonzero. Calculate $F$, its degrees of freedom, and its $p$-value from the restricted and unrestricted residual sums of squares; check with `anova()`. How does this null differ from the overall $F$ test in `summary()`?
@@ -387,9 +364,7 @@ $$
 [PUT YOUR ANSWER HERE]
 **1.** $\hat\sigma^2 = 101.46/522 = 0.1944$, $SST_{educ} = 4025.43$, $R^2_{educ} = 0.1013$이므로
 
-$$
-\operatorname{se}(\hat\beta_1) = \sqrt{\frac{\hat\sigma^2}{SST_{educ}\,(1 - R^2_{educ})}} = \sqrt{\frac{0.1944}{4025.43 \times 0.8987}} = 0.00733
-$$
+$$\operatorname{se}(\hat\beta_1) = \sqrt{\frac{\hat\sigma^2}{SST_{educ}\,(1 - R^2_{educ})}} = \sqrt{\frac{0.1944}{4025.43 \times 0.8987}} = 0.00733$$
 
 이다. `summary()`의 값과 같고, Question 8의 $0.00757$보다 약간 작다.
 
